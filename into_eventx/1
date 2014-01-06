@@ -19,21 +19,17 @@ for i in data['statuses']:
 	n=n+1	
 
 tweets = db.tweets
-
-for j in range(n):
+#for j in range(n):
 	#print  data['statuses'][j]['text']
-	if tweets.find({'text': data['statuses'][j]['text']}).count() == 0:
-        	tweets.insert(data['statuses'][j])
-res=[]
+#	if tweets.find({'text': data['statuses'][j]['text']}).count() == 0:
+#        	print tweets.insert(data['statuses'][j])
+
 for j in range(n):
 	cursor=tweets.find({'text': data['statuses'][j]['text']})
 	for r in cursor:
-		res.append(r['text'])
+                tweets.insert(r['text'])
+		print r['text']
 
 print "Test eventx:: ",db.tweets.count()
-print res
-for rj in res:
-	if rj.find('http') > 1:
-		print rj
 
 fo.close()
