@@ -28,10 +28,10 @@ res=[]
 for j in range(n):
 	cursor=tweets.find({'text': data['statuses'][j]['text']})
 	for r in cursor:
-		res.append(r['text'])
+		if r['text'] not in res:
+			res.append(r['text'])
 
 print "Test eventx:: ",db.tweets.count()
-print res
 for rj in res:
 	if rj.find('http') > 1:
 		print rj
